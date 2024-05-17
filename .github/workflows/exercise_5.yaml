@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: hallokes 
-        run: ./.github/actions/hallokes-bokkes
+        uses: ./.github/actions/hallokes-bokkes
         with:
           user-name: "Frédèrick"
