@@ -21,19 +21,32 @@ jobs:
       - name: Finish building
         run: echo "Build completed successfully"
   
-  deploy-env:
+  deploy-dev:
     needs: build-and-push
+    environment : DEV
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      max-parallel: 1
-      matrix:
-        environment: [ 'DEV','ACC','PRO']
-    environment: ${{ matrix.enviroment }}
     steps:
       - name: deploying
         run: sleep 3
       - name: Print
-        run: echo "Deployed to ${{ matrix.enviroment }}"
+        run: echo "Deployed to dev"
   
+  deploy-acc:
+    needs: [build-and-push,deploy-dev]
+    environment : ACC
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying
+        run: sleep 3
+      - name: Print
+        run: echo "Deployed to acc"
   
+  deploy-pro:
+    needs: [build-and-push,deploy-dev,deploy-acc]
+    environment : PRO
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying
+        run: sleep 3
+      - name: Print
+        run: echo "Deployed to pro"
