@@ -14,9 +14,6 @@ jobs:
       with:
         python-version: '3.12'
     - name: install-dependencies
-    - run: pip install pytest
+      run: pip install pytest
     - run: pytest
       working-directory: exercise_2
-      
-  lint:
-    # Complete the lint job configuration
