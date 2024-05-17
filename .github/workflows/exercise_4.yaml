@@ -1,4 +1,4 @@
-name: Protected envs and stages 4.1
+name: Protected envs and stages Matrix
 
 on:
   pull_request:
