@@ -1,0 +1,52 @@
+name: Protected envs and stages
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches:
+      - master
+
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout github repository
+        uses: actions/checkout@v4
+
+      - name: Build or simulate building
+        run: sleep 5
+
+      - name: Finish building
+        run: echo "Build completed successfully"
+  
+  deploy-dev:
+    needs: build-and-push
+    environment : DEV
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying
+        run: sleep 3
+      - name: Print
+        run: echo "Deployed to dev"
+  
+  deploy-acc:
+    needs: [build-and-push,deploy-dev]
+    environment : ACC
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying
+        run: sleep 3
+      - name: Print
+        run: echo "Deployed to acc"
+  
+  deploy-pro:
+    needs: [build-and-push,deploy-dev,deploy-acc]
+    environment : PRO
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying
+        run: sleep 3
+      - name: Print
+        run: echo "Deployed to pro"
