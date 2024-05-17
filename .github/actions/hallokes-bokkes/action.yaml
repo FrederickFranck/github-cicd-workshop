@@ -10,6 +10,6 @@ runs:
   using: "composite"
   steps:
     - name: Set Greeting
-      run: echo "Hello ${{ inputs.user-name }}."
+      run: echo "Hallokes ${{ inputs.user-name }}."
       shell: bash
 
