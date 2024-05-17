@@ -8,6 +8,9 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
       - name: hallokes 
         uses: ./.github/actions/hallokes-bokkes
         with:
