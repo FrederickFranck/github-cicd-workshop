@@ -2,7 +2,7 @@ name: Greetings
 
 on:
    schedule:
-    - cron: "*/2 * * * *"
+    - cron: "48 13 * * *"
 
 jobs:
   greet:
