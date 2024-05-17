@@ -25,7 +25,6 @@ jobs:
         with:
           context: ./exercise_3
           push: true
-          tags: user/app:latest
-        
+          tags: ${{ secrets.DOCKER_USERNAME }}/ex3:1.0
 
   # More jobs can be added
