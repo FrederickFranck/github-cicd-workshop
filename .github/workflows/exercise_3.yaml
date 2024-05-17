@@ -23,7 +23,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
+          context: ./exercise_3
           push: true
           tags: user/app:latest
+        
 
   # More jobs can be added
