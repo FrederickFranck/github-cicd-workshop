@@ -22,6 +22,7 @@ jobs:
         run: echo "Build completed successfully"
   
   deploy-dev:
+    needs: build-and-push
     environment : DEV
     runs-on: ubuntu-latest
     steps:
@@ -31,6 +32,7 @@ jobs:
         run: echo "Deployed to dev"
   
   deploy-acc:
+    needs: [build-and-push,deploy-dev]
     environment : ACC
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +42,7 @@ jobs:
         run: echo "Deployed to acc"
   
   deploy-pro:
+    needs: [build-and-push,deploy-dev,deploy-acc]
     environment : PRO
     runs-on: ubuntu-latest
     steps:
