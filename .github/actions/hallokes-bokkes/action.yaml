@@ -1,0 +1,15 @@
+name: hallokes-bokkes
+
+description: 'Greet someone'
+inputs:
+  user-name:  # id of input
+    description: 'name of user'
+    required: true
+    default: 'World'
+runs:
+  using: "composite"
+  steps:
+    - name: Set Greeting
+      run: echo "Hello ${{ inputs.who-to-greet }}."
+      shell: bash
+
